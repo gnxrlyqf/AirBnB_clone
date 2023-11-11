@@ -44,9 +44,9 @@ class TestBaseModel_saving(unittest.TestCase):
     """Unist test for saving class"""
 
     def test_save(self):
-        bm = BaseModel()
+        amenity = BaseModel()
         with self.assertRaises(TypeError):
-            bm.save(None)
+            amenity.save(None)
 
     def test_save1(self):
         basemodel = BaseModel()
@@ -76,11 +76,11 @@ class TestBaseModel_dict(unittest.TestCase):
             basemodel .to_dict(None)
 
     def test_keys(self):
-        bm = BaseModel()
-        self.assertIn("id", bm.to_dict())
-        self.assertIn("created_at", bm.to_dict())
-        self.assertIn("updated_at", bm.to_dict())
-        self.assertIn("__class__", bm.to_dict())
+        amenity = BaseModel()
+        self.assertIn("id", amenity.to_dict())
+        self.assertIn("created_at", amenity.to_dict())
+        self.assertIn("updated_at", amenity.to_dict())
+        self.assertIn("__class__", amenity.to_dict())
 
     def test_output(self):
         time = datetime.today()
