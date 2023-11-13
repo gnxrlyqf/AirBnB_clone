@@ -9,6 +9,7 @@ from models.city import City
 from models.place import Place
 from models.state import State
 from models.review import Review
+import re
 
 
 class HBNBCommand(cmd.Cmd):
@@ -28,6 +29,17 @@ class HBNBCommand(cmd.Cmd):
         "Review"
     }
 
+    def strtok(self, args):
+        pattern = r'(\'[^\']*\'|"[^"]*"|\S+)'
+        result = re.findall(pattern, args)
+        output = []
+        for token in result:
+            if token[0] == token[-1] == '"':
+                output.append(token[1:-1])
+            else:
+                output.append(token)
+        return output
+
     def do_quit(self, arg):
         """Quit command to exit the programl"""
         return True
@@ -42,9 +54,9 @@ class HBNBCommand(cmd.Cmd):
         create new class and print id
         """
         if arg is None:
-            print("** class name missing **")
-        elif arg not in self.classes:
             print("** class doesn't exist **")
+        elif arg not in self.classes:
+            print("** class name missing **")
         else:
             new = eval(arg)()
             print(new.id)
@@ -54,7 +66,8 @@ class HBNBCommand(cmd.Cmd):
         """Usage: show <class> <id>
         print dictionary representation of an object
         """
-        args = arg.split()
+        if arg:
+            args = self.strtok(arg)
         if len(args) == 0:
             print("** class name missing **")
         elif args[0] not in self.classes:
@@ -64,16 +77,17 @@ class HBNBCommand(cmd.Cmd):
         else:
             storage.reload()
             objects = storage.all()
-            if not "<{}>.{}".format(args[0], args[1]) in objects.keys():
+            if not "{}.{}".format(args[0], args[1]) in objects.keys():
                 print("** no instance found **")
             else:
-                print(objects["<{}>.{}".format(args[0], args[1])])
+                print(objects["{}.{}".format(args[0], args[1])])
 
     def do_destroy(self, arg):
         """Usage: destroy <class> <id>
         deletes an object
         """
-        args = arg.split()
+        if arg:
+            args = self.strtok(arg)
         if len(args) == 0:
             print("** class name missing **")
         elif not args[0] in self.classes:
@@ -83,10 +97,10 @@ class HBNBCommand(cmd.Cmd):
         else:
             storage.reload()
             objects = storage.all()
-            if not "<{}>.{}".format(args[0], args[1]) in objects.keys():
+            if not "{}.{}".format(args[0], args[1]) in objects.keys():
                 print("** no instance found **")
             else:
-                del objects["<{}>.{}".format(args[0], args[1])]
+                del objects["{}.{}".format(args[0], args[1])]
                 storage.save()
 
     def do_all(self, arg):
@@ -107,7 +121,8 @@ class HBNBCommand(cmd.Cmd):
         """Usage: update <class> <id> <attribute> <value>
         updates or adds an attribute to an object
         """
-        args = arg.split()
+        if arg:
+            args = self.strtok(arg)
         storage.reload()
         objects = storage.all()
         if len(args) == 0:
@@ -116,7 +131,7 @@ class HBNBCommand(cmd.Cmd):
             print("** class doesn't exist **")
         elif len(args) == 1:
             print("** instance id missing **")
-        elif not "<{}>.{}".format(args[0], args[1]) in objects.keys():
+        elif not "{}.{}".format(args[0], args[1]) in objects.keys():
             print("** no instance found **")
         elif len(args) == 2:
             print("** attribute name missing **")
