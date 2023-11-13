@@ -127,7 +127,7 @@ class HBNBCommand(cmd.Cmd):
             args = self.strtok(arg)
         storage.reload()
         objects = storage.all()
-        if len(args) == 0:
+        if len(arg) == 0:
             print("** class name missing **")
         elif not args[0] in self.classes:
             print("** class doesn't exist **")
