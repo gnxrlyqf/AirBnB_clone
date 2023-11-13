@@ -70,7 +70,7 @@ class HBNBCommand(cmd.Cmd):
         """
         if arg:
             args = self.strtok(arg)
-        if len(args) == 0:
+        if len(arg) == 0:
             print("** class name missing **")
         elif args[0] not in self.classes:
             print("** class doesn't exist **")
