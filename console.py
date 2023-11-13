@@ -140,8 +140,8 @@ class HBNBCommand(cmd.Cmd):
         elif len(args) == 3:
             print("** value missing **")
         else:
-            instance = objects["<{}>.{}".format(args[0], args[1])]
-            setattr(instance, args[2], args[3][1:-1])
+            instance = objects["{}.{}".format(args[0], args[1])]
+            setattr(instance, args[2], args[3])
             instance.save()
 
     def emptyline(self):
