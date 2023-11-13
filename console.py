@@ -53,14 +53,16 @@ class HBNBCommand(cmd.Cmd):
         """Usage: create <class>
         create new class and print id
         """
-        if arg is None:
-            print("** class doesn't exist **")
-        elif arg not in self.classes:
+        if len(arg) == 0:
             print("** class name missing **")
         else:
-            new = eval(arg)()
-            print(new.id)
-            storage.save()
+            args = self.strtok(arg)
+            if args[0] not in self.classes:
+                print("** class doesn't exist **")
+            else:
+                new = eval(args[0])()
+                print(new.id)
+                storage.save()
 
     def do_show(self, arg):
         """Usage: show <class> <id>
