@@ -2,9 +2,9 @@
 """Unittest for user
 
 Unittest classes:
-    TestBaseModel_instance
-    TestBaseModel_saving
-    TestBaseModel_dict
+    TestUser_instance
+    TestUser_saving
+    TestUser_dict
 """
 import models
 import unittest
