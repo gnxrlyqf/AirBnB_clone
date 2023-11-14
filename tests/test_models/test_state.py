@@ -2,9 +2,9 @@
 """Unittest for state
 
 Unittest classes:
-    TestBaseModel_instance
-    TestBaseModel_saving
-    TestBaseModel_dict
+    TestState_instance
+    TestState_saving
+    TestState_dict
 """
 import models
 import unittest
@@ -39,6 +39,9 @@ class TestState_instance(unittest.TestCase):
         self.assertEqual(state.created_at, time)
         self.assertEqual(state.updated_at, time)
 
+    def test_state(self):
+        state = State()
+        self.assertEqual(state.name, str)
 
 class TestState_saving(unittest.TestCase):
     """Unist test for saving class"""

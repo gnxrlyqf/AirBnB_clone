@@ -2,9 +2,9 @@
 """Unittest for city
 
 Unittest classes:
-    TestBaseModel_instance
-    TestBaseModel_saving
-    TestBaseModel_dict
+    TestCity_instance
+    TestCity_saving
+    TestCity_dict
 """
 import models
 import unittest
@@ -38,6 +38,11 @@ class TestCity_instance(unittest.TestCase):
         self.assertEqual(city.id, "345")
         self.assertEqual(city.created_at, time)
         self.assertEqual(city.updated_at, time)
+
+    def test_city(self):
+        city = City()
+        self.assertEqual(city.state_id, str)
+        self.assertEqual(city.name, str)
 
 class TestCity_saving(unittest.TestCase):
     """Unist test for saving class"""

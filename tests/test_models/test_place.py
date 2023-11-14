@@ -2,9 +2,9 @@
 """Unittest for place
 
 Unittest classes:
-    TestBaseModel_instance
-    TestBaseModel_saving
-    TestBaseModel_dict
+    TestPlace_instance
+    TestPlace_saving
+    TestPlace_dict
 """
 import models
 import unittest
@@ -38,6 +38,20 @@ class TestPlace_instance(unittest.TestCase):
         self.assertEqual(place.id, "345")
         self.assertEqual(place.created_at, time)
         self.assertEqual(place.updated_at, time)
+
+    def test_place(self):
+        place = Place()
+        self.assertEqual(place.city_id, str)
+        self.assertEqual(place.user_id, str)
+        self.assertEqual(place.name, str)
+        self.assertEqual(place.description, str)
+        self.assertEqual(place.number_rooms, int)
+        self.assertEqual(place.number_bathrooms, int)
+        self.assertEqual(place.max_guest, int)
+        self.assertEqual(place.price_by_night, float)
+        self.assertEqual(place.latitude, float)
+        self.assertEqual(place.longitude, float)
+        self.assertEqual(place.amenity, list)
 
 
 class TestPlace_saving(unittest.TestCase):

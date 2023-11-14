@@ -2,9 +2,9 @@
 """Unittest for amenity
 
 Unittest classes:
-    TestBaseModel_instance
-    TestBaseModel_saving
-    TestBaseModel_dict
+    TestAmenity_instance
+    TestAmenity_saving
+    TestAmenity_dict
 """
 import models
 import unittest
@@ -39,6 +39,9 @@ class TestAmenity_instance(unittest.TestCase):
         self.assertEqual(amenity.created_at, time)
         self.assertEqual(amenity.updated_at, time)
 
+    def test_amenity(self):
+        amenity = Amenity()
+        self.assertEqual(amenity.name, str)
 
 class TestAmenity_saving(unittest.TestCase):
     """Unist test for saving class"""

@@ -2,9 +2,9 @@
 """Unittest for review
 
 Unittest classes:
-    TestBaseModel_instance
-    TestBaseModel_saving
-    TestBaseModel_dict
+    TestReview_instance
+    TestReview_saving
+    TestReview_dict
 """
 import models
 import unittest
@@ -38,6 +38,12 @@ class TestReview_instance(unittest.TestCase):
         self.assertEqual(review.id, "345")
         self.assertEqual(review.created_at, time)
         self.assertEqual(review.updated_at, time)
+    
+    def test_review(self):
+        review = Review()
+        self.assertEqual(review.place_id, str)
+        self.assertEqual(review.user_id, str)
+        self.assertEqual(review.text, str)
 
 class TestReview_saving(unittest.TestCase):
     """Unist test for saving class"""
