@@ -14,13 +14,13 @@ from models.user import User
 
 
 class TestUser_instance(unittest.TestCase):
-    """Unisttest for instantiating class"""
+    """Unittest for instantiating class"""
 
     def test_no_args(self):
         self.assertEqual(User, type(User()))
 
     def test_stored_in_objects(self):
-        self.assertIn(User(), models.storage.all().values())
+        self.assertIn(User(), storage.all().values())
 
     def test_id(self):
         self.assertEqual(str, type(User().id))
@@ -39,7 +39,13 @@ class TestUser_instance(unittest.TestCase):
         self.assertEqual(user.created_at, time)
         self.assertEqual(user.updated_at, time)
 
-
+    def test_email(self):
+        user = User()
+        self.assertEqual(user.email, str)
+        self.assertEqual(user.password, str)
+        self.assertEqual(user.first_name, str)
+        self.assertEqual(user.last_name, str)
+ 
 class TestUser_saving(unittest.TestCase):
     """Unist test for saving class"""
 
