@@ -26,7 +26,7 @@ class FileStorage:
 
     def new(self, obj):
         """Add new object to storage
-        
+
         Args:
             obj (obj): object to add
         """

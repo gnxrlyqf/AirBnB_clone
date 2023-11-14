@@ -34,7 +34,8 @@ class TestAmenity_instance(unittest.TestCase):
     def test_args_kwargs(self):
         time = datetime.today()
         time_formatted = time.isoformat()
-        amenity = Amenity("12", id="345", created_at=time_formatted, updated_at=time_formatted)
+        amenity = Amenity("12", id="345", created_at=time_formatted,
+                          updated_at=time_formatted)
         self.assertEqual(amenity.id, "345")
         self.assertEqual(amenity.created_at, time)
         self.assertEqual(amenity.updated_at, time)
@@ -42,6 +43,7 @@ class TestAmenity_instance(unittest.TestCase):
     def test_amenity(self):
         amenity = Amenity()
         self.assertEqual(amenity.name, str)
+
 
 class TestAmenity_saving(unittest.TestCase):
     """Unist test for saving class"""
@@ -97,6 +99,7 @@ class TestAmenity_dict(unittest.TestCase):
             'updated_at': time.isoformat()
         }
         self.assertDictEqual(amenity.to_dict(), dictionary)
+
 
 if __name__ == "__main__":
     unittest.main()

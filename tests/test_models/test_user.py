@@ -34,7 +34,8 @@ class TestUser_instance(unittest.TestCase):
     def test_args_kwargs(self):
         time = datetime.today()
         time_formatted = time.isoformat()
-        user = User("12", id="345", created_at=time_formatted, updated_at=time_formatted)
+        user = User("12", id="345", created_at=time_formatted,
+                    updated_at=time_formatted)
         self.assertEqual(user.id, "345")
         self.assertEqual(user.created_at, time)
         self.assertEqual(user.updated_at, time)
@@ -45,7 +46,8 @@ class TestUser_instance(unittest.TestCase):
         self.assertEqual(user.password, str)
         self.assertEqual(user.first_name, str)
         self.assertEqual(user.last_name, str)
- 
+
+
 class TestUser_saving(unittest.TestCase):
     """Unist test for saving class"""
 
@@ -100,6 +102,7 @@ class TestUser_dict(unittest.TestCase):
             'updated_at': time.isoformat()
         }
         self.assertDictEqual(user.to_dict(), dictionary)
+
 
 if __name__ == "__main__":
     unittest.main()

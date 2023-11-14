@@ -34,16 +34,18 @@ class TestReview_instance(unittest.TestCase):
     def test_args_kwargs(self):
         time = datetime.today()
         time_formatted = time.isoformat()
-        review = Review("12", id="345", created_at=time_formatted, updated_at=time_formatted)
+        review = Review("12", id="345", created_at=time_formatted,
+                        updated_at=time_formatted)
         self.assertEqual(review.id, "345")
         self.assertEqual(review.created_at, time)
         self.assertEqual(review.updated_at, time)
-    
+
     def test_review(self):
         review = Review()
         self.assertEqual(review.place_id, str)
         self.assertEqual(review.user_id, str)
         self.assertEqual(review.text, str)
+
 
 class TestReview_saving(unittest.TestCase):
     """Unist test for saving class"""
@@ -99,6 +101,7 @@ class TestReview_dict(unittest.TestCase):
             'updated_at': time.isoformat()
         }
         self.assertDictEqual(review.to_dict(), dictionary)
+
 
 if __name__ == "__main__":
     unittest.main()

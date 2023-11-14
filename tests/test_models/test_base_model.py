@@ -34,7 +34,8 @@ class TestBaseModel_instance(unittest.TestCase):
     def test_args_kwargs(self):
         time = datetime.today()
         time_formatted = time.isoformat()
-        basemodel = BaseModel("12", id="345", created_at=time_formatted, updated_at=time_formatted)
+        basemodel = BaseModel("12", id="345", created_at=time_formatted,
+                              updated_at=time_formatted)
         self.assertEqual(basemodel.id, "345")
         self.assertEqual(basemodel.created_at, time)
         self.assertEqual(basemodel.updated_at, time)
@@ -71,7 +72,7 @@ class TestBaseModel_dict(unittest.TestCase):
         self.assertTrue(dict, type(basemodel.to_dict()))
 
     def test_arg(self):
-        basemodel  = BaseModel()
+        basemodel = BaseModel()
         with self.assertRaises(TypeError):
             basemodel .to_dict(None)
 
@@ -94,6 +95,7 @@ class TestBaseModel_dict(unittest.TestCase):
             'updated_at': time.isoformat()
         }
         self.assertDictEqual(basemodel.to_dict(), dictionary)
+
 
 if __name__ == "__main__":
     unittest.main()

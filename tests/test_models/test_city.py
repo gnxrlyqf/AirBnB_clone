@@ -34,7 +34,8 @@ class TestCity_instance(unittest.TestCase):
     def test_args_kwargs(self):
         time = datetime.today()
         time_formatted = time.isoformat()
-        city = City("12", id="345", created_at=time_formatted, updated_at=time_formatted)
+        city = City("12", id="345", created_at=time_formatted,
+                    updated_at=time_formatted)
         self.assertEqual(city.id, "345")
         self.assertEqual(city.created_at, time)
         self.assertEqual(city.updated_at, time)
@@ -43,6 +44,7 @@ class TestCity_instance(unittest.TestCase):
         city = City()
         self.assertEqual(city.state_id, str)
         self.assertEqual(city.name, str)
+
 
 class TestCity_saving(unittest.TestCase):
     """Unist test for saving class"""
@@ -98,6 +100,7 @@ class TestCity_dict(unittest.TestCase):
             'updated_at': time.isoformat()
         }
         self.assertDictEqual(city.to_dict(), dictionary)
+
 
 if __name__ == "__main__":
     unittest.main()

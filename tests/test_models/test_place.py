@@ -34,7 +34,8 @@ class TestPlace_instance(unittest.TestCase):
     def test_args_kwargs(self):
         time = datetime.today()
         time_formatted = time.isoformat()
-        place = Place("12", id="345", created_at=time_formatted, updated_at=time_formatted)
+        place = Place("12", id="345", created_at=time_formatted,
+                      updated_at=time_formatted)
         self.assertEqual(place.id, "345")
         self.assertEqual(place.created_at, time)
         self.assertEqual(place.updated_at, time)
@@ -108,6 +109,7 @@ class TestPlace_dict(unittest.TestCase):
             'updated_at': time.isoformat()
         }
         self.assertDictEqual(place.to_dict(), dictionary)
+
 
 if __name__ == "__main__":
     unittest.main()
